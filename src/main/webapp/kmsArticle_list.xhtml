@@ -1,0 +1,86 @@
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="template/kmsTemplate.xhtml">
+
+	<ui:define name="kmsTitle">
+		<ui:include src="template/kmsTop.xhtml" />
+	</ui:define>
+
+	<ui:define name="kmsMenu">
+		<ui:include src="template/kmsLeftMenu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="kmsBody">
+		<h:form id="aform">
+
+		<h:selectOneMenu style="width:301px" value="#{kmsArticleBean.kmsKnowledgeId}">
+			<f:selectItems value="#{knowledgeItems.items}"/>
+		</h:selectOneMenu>
+		<h:commandButton  id="searchButton" styleClass="kms-long-button"
+			value="#{kmsMsg.searchByK}" action="#{kmsArticleBean.searchByK}"/>
+		
+		<rich:panel>
+			<rich:dataTable id="aTable" border="1"
+				value="#{kmsArticleBean.kmsArticleItems}" var="a" style=" width : 100%;" rows="10">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column style="width:50px;"/>
+						<rich:column style="width:150px;">
+							<h:outputText value="#{kmsMsg.title}" />
+						</rich:column>
+						<rich:column style="width:80px;">
+							<h:outputText value="#{kmsMsg.createTime}" />
+						</rich:column>
+						<rich:column style="width:80px;">
+							<h:outputText value="author" />
+						</rich:column>
+						<rich:column style="width:120px;">
+							<h:outputText value="knowledge tag" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{kmsMsg.summary}" />
+						</rich:column>
+					</rich:columnGroup>
+				</f:facet>
+
+				<rich:column>
+					<h:commandLink action="kmsArticle_edit" value="#{kmsMsg.edit}">
+						<f:param name="aId" value="#{a.articleId}" />
+					</h:commandLink>
+				</rich:column>
+				
+				<rich:column>
+					<h:commandLink action="kmsArticle" value="#{a.title}">
+						<f:param name="aId" value="#{a.articleId}" />
+					</h:commandLink>
+				</rich:column>
+				
+				<rich:column>
+					<h:outputText value="#{a.insertTime}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{a.kmsUser.username}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{a.kmsKnowledge.name}" />
+				</rich:column>
+				<rich:column>
+					<h:outputText value="#{a.summary}" />
+				</rich:column>
+			</rich:dataTable>
+			<dataScroller for="aform:aTable" style=" width : 100%;"/>
+
+			</rich:panel>
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="kmsBottom">
+		<ui:include src="template/kmsBottom.xhtml" />
+	</ui:define>
+</ui:decorate>

@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<h:panelGrid>
+			<h:commandLink action="/kmsKnowledge_create.xhtml" value="#{kmsMsg.newKnowledge}" />
+			<h:commandLink action="/kmsArticle_create.xhtml" value="#{kmsMsg.newArticle}" />
+			<h:commandLink action="/kmsBook_create.xhtml" value="#{kmsMsg.newBook}" />
+			<h:outputText height="15px" lineType="none"/>
+			<h:commandLink action="/kmsKnowledge_list.xhtml" value="#{kmsMsg.knowledgeList}" />
+			<h:commandLink action="/kmsArticle_list.xhtml" value="#{kmsMsg.articleList}" />
+			<h:commandLink action="/kmsBook_list.xhtml" value="#{kmsMsg.bookList}" />
+		</h:panelGrid>
+		<!-- 
+		<h:selectOneListbox id="select" value="#{skinBean.skin}"
+			onchange="submit()">
+			<f:selectItem itemLabel="emeraldTown" itemValue="emeraldTown" />
+			<f:selectItem itemLabel="deepMarine" itemValue="deepMarine" />
+			<f:selectItem itemLabel="plain" itemValue="plain" />
+
+			<f:selectItem itemLabel="blueSky" itemValue="blueSky" />
+			<f:selectItem itemLabel="wine" itemValue="wine" />
+			<f:selectItem itemLabel="japanCherry" itemValue="japanCherry" />
+			<f:selectItem itemLabel="ruby" itemValue="ruby" />
+			<f:selectItem itemLabel="classic" itemValue="classic" />
+
+			<f:selectItem itemLabel="darkX" itemValue="darkX" />
+			<f:selectItem itemLabel="glassX" itemValue="glassX" />
+			<f:selectItem itemLabel="laguna" itemValue="laguna" />
+		</h:selectOneListbox>
+		-->
+	</h:form>
+</ui:composition>

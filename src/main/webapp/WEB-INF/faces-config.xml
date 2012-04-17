@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" version="2.0">
+
+	<application>
+		<resource-bundle>
+			<base-name>kmsMessage</base-name>
+			<var>kmsMsg</var>
+		</resource-bundle>
+	</application>
+</faces-config>

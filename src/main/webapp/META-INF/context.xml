@@ -1,0 +1,5 @@
+<Context>
+	<Resource name="JDBC/kms" auth="Container" type="javax.sql.DataSource"
+		username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/kms" maxActive="8"	maxIdle="4" characterEncoding="UTF-8"/>
+</Context>

@@ -1,0 +1,43 @@
+.kms-normal-button{
+	width: 100px;
+	cursor: pointer;
+}
+
+.kms-long-button{
+	width: 150px;
+	cursor: pointer;
+}
+
+.rich-panel-h:body {
+	color: #000000;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 16px;
+}
+
+a {
+	font-size: 14px;
+}
+
+.menu_style {
+	valign: top;
+	width: 300px;
+	height: 800px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.rich_panel {
+	align: left;
+	valign: top;
+	height: 800px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.rich-datascr-button {
+	width: 80px;
+}
+
+.rich-datascr-ctrls-separator {
+	width: 100px;
+}

@@ -1,0 +1,56 @@
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="template/kmsTemplate.xhtml">
+
+	<ui:define name="kmsTitle">
+		<ui:include src="template/kmsTop.xhtml" />
+	</ui:define>
+
+	<ui:define name="kmsMenu">
+		<ui:include src="template/kmsLeftMenu.xhtml" />
+	</ui:define>
+
+	<ui:define name="kmsBody">
+		<h:form id="kform">
+			<h:panelGrid columns="2">
+				<h:outputText value="#{kmsMsg.bookName}" />
+				<h:inputText style="width:311px" value="#{kmsBookBean.kmsBook.bookname}" />
+				
+				<h:outputText value="#{kmsMsg.kmsKnowledge}" />
+				<h:selectOneMenu style="width:301px" value="#{kmsBookBean.kmsKnowledgeId}">
+					<f:selectItems value="#{knowledgeItems.items}"/>
+				</h:selectOneMenu>
+				
+	  			<h:outputText value="#{kmsMsg.authorName}" />
+				<h:inputText style="width:311px" value="#{kmsBookBean.kmsBook.author}" />
+				
+				<h:outputText value="#{kmsMsg.pressName}" />
+				<h:inputText style="width:311px" value="#{kmsBookBean.kmsBook.press}" />
+				
+				<h:outputText value="#{kmsMsg.publishTime} (yyyy-MM-dd)" />
+				<h:inputText value="#{kmsBookBean.kmsBook.publishTime}">
+					<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT+8" locale="cn"/>
+				</h:inputText>
+				
+				<h:outputText value="#{kmsMsg.location}" />
+				<h:inputText style="width:311px" value="#{kmsBookBean.kmsBook.location}" />
+				
+				<h:outputText value="#{kmsMsg.buyTime} (yyyy-MM-dd)" />
+				<h:inputText value="#{kmsBookBean.kmsBook.buyTime}">
+					<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT+8" locale="cn"/>
+				</h:inputText>
+				
+				<h:commandButton id="saveButton" styleClass="kms-normal-button" value="#{kmsMsg.launch}" action="#{kmsBookBean.create}" />
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="kmsBottom">
+		<ui:include src="template/kmsBottom.xhtml" />
+	</ui:define>
+</ui:decorate>
