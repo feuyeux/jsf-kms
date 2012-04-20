@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -20,10 +20,10 @@
 	
 	<h:panelGrid id="content" columns="2" style="width:100%; margin:0px;padding:0px;border:0px" 
 	columnClasses="menu_style,content_style">
-		<rich:panel id="menu" styleClass="rich_panel">
+		<rich:panel id="menu" styleClass="rich_panel" style="height:330px;">
 			<ui:insert name="kmsMenu"></ui:insert>
 		</rich:panel>
-		<rich:panel id="body" styleClass="rich_panel">
+		<rich:panel id="body" styleClass="rich_panel" style="overflow-y:auto">
 			<ui:insert name="kmsBody"></ui:insert>
 		</rich:panel>
 	</h:panelGrid>

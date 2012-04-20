@@ -12,7 +12,10 @@ import javax.faces.model.SelectItem;
 import creative.fire.no202.dao.KmsKnowledgeDao;
 import creative.fire.no202.entity.KmsKnowledge;
 import creative.fire.no202.entity.KmsUser;
-
+/**
+ * @author feuyeux@gmail.com
+ * @version 2.0
+ */
 @ManagedBean
 @RequestScoped
 public class KnowledgeItems {

@@ -11,10 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 @Entity
 @Table(name = "kms_user", catalog = "kms", schema = "")

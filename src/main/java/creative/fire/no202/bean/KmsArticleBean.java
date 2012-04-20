@@ -3,6 +3,7 @@ package creative.fire.no202.bean;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,12 +23,13 @@ import creative.fire.no202.util.FileUploadBean;
 import creative.fire.no202.util.KMSFile;
 
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 @ManagedBean
 @ViewScoped
-public class KmsArticleBean {
+public class KmsArticleBean implements Serializable {
+	private static final long serialVersionUID = -432417525217211434L;
 	private final static String filepath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploadFiles";
 	private final static String attachment_separator = ";";
 	private KmsArticleDao dao;

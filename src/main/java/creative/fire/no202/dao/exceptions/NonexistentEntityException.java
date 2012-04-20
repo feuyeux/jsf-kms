@@ -1,5 +1,8 @@
 package creative.fire.no202.dao.exceptions;
-
+/**
+ * @author feuyeux@gmail.com
+ * @version 2.0
+ */
 public class NonexistentEntityException extends Exception {
 	private static final long serialVersionUID = 2462359126625502143L;
 

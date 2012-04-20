@@ -3,7 +3,10 @@ package creative.fire.no202.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+/**
+ * @author feuyeux@gmail.com
+ * @version 2.0
+ */
 public class KmsDBFactory {
 	private static KmsDBFactory instance;
 	private static EntityManagerFactory emf;

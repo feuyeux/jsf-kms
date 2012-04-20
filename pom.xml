@@ -3,14 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>creative.fire</groupId>
-	<artifactId>no202</artifactId>
-	<name>kms</name>
+	<artifactId>kms</artifactId>
 	<version>2.0</version>
 	<packaging>war</packaging>
 	<properties>
 		<org.richfaces.bom.version>4.2.1.Final</org.richfaces.bom.version>
 		<jsf.version>2.1.7</jsf.version>
-
 		<hibernate.version>3.5.1-Final</hibernate.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 		<trinidad.version>2.0.0</trinidad.version>
@@ -45,7 +43,6 @@
 			<name>repo1</name>
 			<url>http://repo1.maven.org/maven2/</url>
 		</repository>
-
 	</repositories>
 
 	<dependencies>
@@ -102,8 +99,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.0.5</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId> 
-			<version>3.1.0.GA</version> </dependency> -->
 
 		<!-- JPA2 -->
 		<dependency>
@@ -155,22 +150,10 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.trinidad</groupId>
-			<artifactId>trinidad-api</artifactId>
-			<version>${trinidad.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.trinidad</groupId>
-			<artifactId>trinidad-impl</artifactId>
-			<version>${trinidad.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
 		<finalName>kms</finalName>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>

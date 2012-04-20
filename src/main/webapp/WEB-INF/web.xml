@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="richfaces-showcase" version="2.5"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<display-name>no202</display-name>
-
-	<context-param>
-		<param-name>org.richfaces.skin</param-name>
-		<param-value>#{skinBean.skin}</param-value>
-	</context-param>
-	<context-param>
-		<param-name>org.richfaces.fileUpload.maxRequestSize</param-name>
-		<param-value>100000</param-value>
-	</context-param>
-	<context-param>
-		<param-name>org.richfaces.fileUpload.createTempFiles</param-name>
-		<param-value>false</param-value>
-	</context-param>
+<web-app id="no202_kms" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>kms2.0</display-name>
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
@@ -23,6 +10,18 @@
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.fileUpload.createTempFiles</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.fileUpload.maxRequestSize</param-name>
+		<param-value>100000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.skin</param-name>
+		<param-value>#{skinBean.skin}</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -38,11 +37,6 @@
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>faces/signin.xhtml</welcome-file>
 	</welcome-file-list>
-	<login-config>
-		<auth-method>BASIC</auth-method>
-	</login-config>
 </web-app>

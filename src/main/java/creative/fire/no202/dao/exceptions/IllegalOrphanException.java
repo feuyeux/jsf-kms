@@ -2,7 +2,10 @@ package creative.fire.no202.dao.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author feuyeux@gmail.com
+ * @version 2.0
+ */
 public class IllegalOrphanException extends Exception {
 
 	private static final long serialVersionUID = -3400023837132006672L;

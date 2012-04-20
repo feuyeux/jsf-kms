@@ -13,10 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 @Entity
 @Table(name = "kms_article", catalog = "kms", schema = "")

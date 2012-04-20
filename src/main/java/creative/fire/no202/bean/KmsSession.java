@@ -15,8 +15,8 @@ import creative.fire.no202.dao.util.KmsPrimaryKey;
 import creative.fire.no202.entity.KmsUser;
 
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 @ManagedBean
 @SessionScoped

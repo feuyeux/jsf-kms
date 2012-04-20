@@ -20,10 +20,9 @@ import creative.fire.no202.entity.KmsArticle;
 import creative.fire.no202.entity.KmsBook;
 import creative.fire.no202.entity.KmsKnowledge;
 import creative.fire.no202.entity.KmsUser;
-
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 public class KmsKnowledgeDao {
 

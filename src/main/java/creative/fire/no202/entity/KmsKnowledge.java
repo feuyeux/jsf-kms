@@ -16,7 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
+/**
+ * @author feuyeux@gmail.com
+ * @version 2.0
+ */
 @Entity
 @Table(name = "kms_knowledge", catalog = "kms", schema = "")
 public class KmsKnowledge implements Serializable {

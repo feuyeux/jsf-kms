@@ -1,10 +1,6 @@
-<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	template="template/kmsTemplate.xhtml">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="template/kmsTemplate.xhtml">
 
 	<ui:define name="kmsTitle">
 		<ui:include src="template/kmsTop.xhtml" />
@@ -16,55 +12,56 @@
 
 	<ui:define name="kmsBody">
 		<h:form id="kform">
-			<h:outputText value="#{kmsMsg.addNotification}" rendered="#{!kmsKnowledgeBean.show}"/>
-			<rich:panel rendered="#{kmsKnowledgeBean.show}">
-			<rich:dataTable id="kTable" border="1"
-				value="#{kmsKnowledgeBean.kmsKnowledgeItems}" var="k" style=" width : 100%;" rows="10">
-				<f:facet name="header">
-					<rich:columnGroup>
-						<rich:column style="width:120px;">
-							<h:outputText value="#{kmsMsg.name}" />
-						</rich:column>
-						<rich:column style="width:150px;">
-							<h:outputText value="#{kmsMsg.launchTime}" />
-						</rich:column>
-						<rich:column style="width:120px;">
-							<h:outputText value="#{kmsMsg.articles}" />
-						</rich:column>
-						<rich:column style="width:120px;">
-							<h:outputText value="#{kmsMsg.books}" />
-						</rich:column>
-						<rich:column style="width:120px;">
-							<h:outputText value="#{kmsMsg.lauchPeople}" />
-						</rich:column>
-					</rich:columnGroup>
-				</f:facet>
+			<rich:panel id="knowledgeListPanel" styleClass="list_style">
+				<h:outputText value="#{kmsMsg.addNotification}" rendered="#{!kmsKnowledgeBean.show}" />
+				<rich:dataTable id="kTable" border="1" value="#{kmsKnowledgeBean.kmsKnowledgeItems}" var="k" style="width:100%;"
+					rows="10" rendered="#{kmsKnowledgeBean.show}">
+					<f:facet name="header">
+						<rich:columnGroup>
+							<rich:column style="width:120px;">
+								<h:outputText value="#{kmsMsg.name}" />
+							</rich:column>
+							<rich:column style="width:150px;">
+								<h:outputText value="#{kmsMsg.launchTime}" />
+							</rich:column>
+							<rich:column style="width:120px;">
+								<h:outputText value="#{kmsMsg.articles}" />
+							</rich:column>
+							<rich:column style="width:120px;">
+								<h:outputText value="#{kmsMsg.books}" />
+							</rich:column>
+							<rich:column style="width:120px;">
+								<h:outputText value="#{kmsMsg.lauchPeople}" />
+							</rich:column>
+						</rich:columnGroup>
+					</f:facet>
 
-				<rich:column>
-					<h:commandLink action="kmsKnowledge_edit" value="#{k.name}">
-						<f:param name="kId" value="#{k.knowledgeId}" />
-					</h:commandLink>
-				</rich:column>
-				<rich:column>
-					<h:outputText value="#{k.touchTime}">
-						<f:convertDateTime pattern="yyyy-MM-dd" />
-					</h:outputText>
-				</rich:column>
-				
-				<rich:column>
-					<h:commandLink action="kmsArticle_list" value="#{k.articles}">
-						<f:param name="kId" value="#{k.knowledgeId}" />
-					</h:commandLink>
-				</rich:column>
-				
-				<rich:column>
-					<h:outputText value="#{k.books}" />
-				</rich:column>
-				<rich:column>
-					<h:outputText value="#{k.kmsUser.username}" />
-				</rich:column>
-			</rich:dataTable>
-			<rich:dataScroller id="kmsKnowledgeDataScroller" for="kform:kTable" style=" width : 100%;"/>
+					<rich:column>
+						<h:commandLink action="kmsKnowledge_edit" value="#{k.name}">
+							<f:param name="kId" value="#{k.knowledgeId}" />
+						</h:commandLink>
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{k.touchTime}">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:outputText>
+					</rich:column>
+
+					<rich:column>
+						<h:commandLink action="kmsArticle_list" value="#{k.articles}">
+							<f:param name="kId" value="#{k.knowledgeId}" />
+						</h:commandLink>
+					</rich:column>
+
+					<rich:column>
+						<h:outputText value="#{k.books}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{k.kmsUser.username}" />
+					</rich:column>
+				</rich:dataTable>
+				<rich:dataScroller id="kmsKnowledgeDataScroller" renderIfSinglePage="false" for="kform:kTable"
+					style=" width : 100%;" />
 			</rich:panel>
 		</h:form>
 	</ui:define>

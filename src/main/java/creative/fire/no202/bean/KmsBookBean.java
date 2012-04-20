@@ -1,5 +1,6 @@
 package creative.fire.no202.bean;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -16,12 +17,13 @@ import creative.fire.no202.entity.KmsKnowledge;
 import creative.fire.no202.entity.KmsUser;
 
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 @ManagedBean
 @ViewScoped
-public class KmsBookBean {
+public class KmsBookBean implements Serializable{
+	private static final long serialVersionUID = -6048033994535490103L;
 	private KmsBook kmsBook = null;
 	private List<KmsBook> kmsBookItems = null;
 	private KmsBookDao dao = null;

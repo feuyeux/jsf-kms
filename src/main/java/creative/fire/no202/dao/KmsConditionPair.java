@@ -1,8 +1,7 @@
 package creative.fire.no202.dao;
-
 /**
- * 
- * @author luh
+ * @author feuyeux@gmail.com
+ * @version 2.0
  */
 public class KmsConditionPair {
 	private String parameter;

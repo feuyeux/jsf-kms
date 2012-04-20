@@ -19,13 +19,12 @@
 			<h:outputText value="#{kmsMsg.knowledgeTagName}" />
 			<div><h:inputText value="#{kmsKnowledgeBean.kmsKnowledge.name}" /></div>
 			<h:outputText value="#{kmsMsg.descKnowledge}" />
-			<div><h:inputTextarea style="height:200px;width:200px;"
+			<div><h:inputTextarea style="width:309px"
 				value="#{kmsKnowledgeBean.kmsKnowledge.description}" /></div>
 			<h:commandButton  id="updateButton" styleClass="kms-normal-button" value="#{kmsMsg.apply}"
 				action="#{kmsKnowledgeBean.updateKnowledge}"/>
-			<rich:spacer width="50px" />
-			<h:commandButton value="#{kmsMsg.cancel}" action="kmsKnowledge_list"
-				style="cursor: pointer;" immediate="true" />
+			<h:commandButton value="#{kmsMsg.cancel}" action="kmsKnowledge_list" styleClass="kms-normal-button"
+				style="cursor: pointer;margin-left:50px" immediate="true" />
 		</h:form>
 	</ui:define>
 
