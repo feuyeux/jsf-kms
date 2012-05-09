@@ -76,6 +76,12 @@
 			<version>5.0.5</version>
 		</dependency>
 
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
+
 		<!-- JPA2 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -149,8 +155,7 @@
 							<phase>process-resources</phase>
 							<configuration>
 								<tasks>
-									<native2ascii encoding="utf-8"
-										dest="${project.build.outputDirectory}" src="${project.build.sourceDirectory}" />
+									<native2ascii encoding="utf-8" src="${project.build.testOutputDirectory}" dest="${project.build.outputDirectory}"/>
 								</tasks>
 							</configuration>
 							<goals>

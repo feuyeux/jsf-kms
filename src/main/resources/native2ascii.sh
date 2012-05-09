@@ -1,0 +1,1 @@
+native2ascii -encoding utf-8 kmsMessage_zh.native kmsMessage.properties

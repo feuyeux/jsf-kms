@@ -33,7 +33,7 @@ public class KmsArticleBean implements Serializable {
 	private final static String filepath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploadFiles";
 	private final static String attachment_separator = ";";
 	private KmsArticleDao dao;
-	private KmsKnowledgeDao kdao;
+	private KmsKnowledgeDao kmsKnowledgeDao;
 	private KmsArticle kmsArticle;// support TinyMCE
 	private List<KmsArticle> kmsArticleItems;
 	private String kmsKnowledgeId;
@@ -41,7 +41,7 @@ public class KmsArticleBean implements Serializable {
 
 	public KmsArticleBean() {
 		dao = new KmsArticleDao();
-		kdao = new KmsKnowledgeDao();
+		kmsKnowledgeDao = new KmsKnowledgeDao();
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String aId = params.get("aId");
 
@@ -61,7 +61,7 @@ public class KmsArticleBean implements Serializable {
 	}
 
 	public String create() throws IOException {
-		KmsKnowledge kmsKnowledge = kdao.findKmsKnowledge(kmsKnowledgeId);
+		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
 		if (kmsKnowledge == null)
 			return "kmsArticle_create";
 		kmsArticle.setKmsKnowledge(kmsKnowledge);
@@ -110,7 +110,7 @@ public class KmsArticleBean implements Serializable {
 	}
 
 	public String update() throws IOException {
-		KmsKnowledge kmsKnowledge = kdao.findKmsKnowledge(kmsKnowledgeId);
+		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
 		if (kmsKnowledge == null)
 			return "kmsArticle_edit";
 		kmsArticle.setKmsKnowledge(kmsKnowledge);
@@ -195,7 +195,7 @@ public class KmsArticleBean implements Serializable {
 	}
 
 	public void searchByK() {
-		KmsKnowledge kmsKnowledge = kdao.findKmsKnowledge(kmsKnowledgeId);
+		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
 		if (kmsKnowledge == null)
 			return;
 		kmsArticleItems = dao.searchKmsArticle(kmsKnowledge);

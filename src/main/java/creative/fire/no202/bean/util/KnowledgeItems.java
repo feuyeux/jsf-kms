@@ -24,8 +24,8 @@ public class KnowledgeItems {
 
 	public KnowledgeItems() {
 
-		Map<String, Object> sesions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		KmsUser kmsUser = (KmsUser) sesions.get("kmsUser");
+		Map<String, Object> sessions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		KmsUser kmsUser = (KmsUser) sessions.get("kmsUser");
 		dao = new KmsKnowledgeDao();
 		List<KmsKnowledge> kks = dao.findKmsKnowledgeByUser(kmsUser, -1, -1);
 

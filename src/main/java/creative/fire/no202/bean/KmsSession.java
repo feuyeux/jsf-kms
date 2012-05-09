@@ -24,8 +24,8 @@ public class KmsSession implements Serializable {
 	private static final long serialVersionUID = -9145582920498318744L;
 	private KmsUser kmsUser;
 	private KmsUserDao dao;
-	private String kmsUserName = "admin";// "rvcndev";
-	private String kmsPassword = "admin";// "Devlab1";
+	private String kmsUserName = "admin";
+	private String kmsPassword = "admin";
 	private Logger logger;
 
 	@PostConstruct
@@ -65,9 +65,9 @@ public class KmsSession implements Serializable {
 		if (kmsUser == null)
 			return null;
 
-		Map<String, Object> sesions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		sesions.put("kmsUser", kmsUser);
-		return "kmsArticle_list";// "kmsKnowledge_list";
+		Map<String, Object> sessions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessions.put("kmsUser", kmsUser);
+		return "kmsArticle_list";
 	}
 
 }
