@@ -29,13 +29,13 @@ RichFace:
 	<dependency>
 		<groupId>org.richfaces.ui</groupId>
 		<artifactId>richfaces-components-ui</artifactId>
-		<version>4.2.0.Final</version>
+		<version>4.2.1.Final</version>
 	</dependency>
 	
 	<dependency>
 		<groupId>org.richfaces.core</groupId>
 		<artifactId>richfaces-core-impl</artifactId>
-		<version>4.2.0.Final</version>
+		<version>4.2.1.Final</version>
 	</dependency>
 
 04/04/2012
