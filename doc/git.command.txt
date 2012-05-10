@@ -1,0 +1,50 @@
+12/29 2011
+This project is a demo for study JSF2.1.x(2.1.7) and Richfaces4.x(4.2.1)
+
+git daily commands：
+git clone git@github.com:feuyeux/jsfrf.git
+--
+git remote add origin git@github.com:feuyeux/jsfrf.git
+
+git add -A
+git commit -m ''
+    
+git push origin master
+git pull origin master
+--
+git remote add push git@github.com:feuyeux/jsfrf.git
+git checkout push
+git pull push push
+git fetch push
+--
+git merge push/master
+
+--
+12/31 2011
+git reset --hard HEAD~2
+git push origin master --force
+--
+05/10 2012
+1.Working Tree
+2.Index files
+3.Repository
+
+git diff 1-2
+git diff cache 2-3
+git diff HEAD 1-3
+git reset --sfot HEAD^	=rollback 3
+git reset --mixed HEAD^	=rollback 2+3
+git reset --hard HEAD^	=rollback 1+2+3
+
+git tag xxx
+git tag -d xxx
+git tag -f xxx
+git tag
+
+git push origin xxx
+git push origin :xxx
+git push origin --tags
+--
+https://github.com/feuyeux/jsfrf/graphs/punch_card
+--
+git clone -b master https://github.com/richfaces/showcase
