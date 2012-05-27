@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @version 2.0
  */
 @Entity
-@Table(name = "kms_user", catalog = "kms", schema = "")
+@Table(name = "kms_user",schema = "kms")
 @NamedQuery(name = "findByNameAndPassword", query = "SELECT k FROM KmsUser k " + "WHERE k.username = :username and k.password = :password")
 public class KmsUser implements Serializable {
 
@@ -99,15 +99,18 @@ public class KmsUser implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
+		int hash = 37;
 		hash += (userId != null ? userId.hashCode() : 0);
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof KmsUser)) {
+		if (object == null)
+			return false;
+		if (object == this)
+			return true;
+		if (KmsUser.class != object.getClass()) {
 			return false;
 		}
 		KmsUser other = (KmsUser) object;

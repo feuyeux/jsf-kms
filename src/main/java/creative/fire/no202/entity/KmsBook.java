@@ -12,12 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  * @author feuyeux@gmail.com
  * @version 2.0
  */
 @Entity
-@Table(name = "kms_book", catalog = "kms", schema = "")
+@Table(name = "kms_book",  schema = "kms")
 public class KmsBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -134,15 +135,18 @@ public class KmsBook implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
+		int hash = 37;
 		hash += (bookId != null ? bookId.hashCode() : 0);
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof KmsBook)) {
+		if (object == null)
+			return false;
+		if (object == this)
+			return true;
+		if (KmsBook.class != object.getClass()) {
 			return false;
 		}
 		KmsBook other = (KmsBook) object;

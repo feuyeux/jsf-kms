@@ -21,7 +21,7 @@ import javax.persistence.Transient;
  * @version 2.0
  */
 @Entity
-@Table(name = "kms_knowledge", catalog = "kms", schema = "")
+@Table(name = "kms_knowledge",schema = "kms")
 public class KmsKnowledge implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Transient
@@ -137,15 +137,18 @@ public class KmsKnowledge implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
+		int hash = 37;
 		hash += (knowledgeId != null ? knowledgeId.hashCode() : 0);
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof KmsKnowledge)) {
+		if (object == null)
+			return false;
+		if (object == this)
+			return true;
+		if (KmsKnowledge.class != object.getClass()) {
 			return false;
 		}
 		KmsKnowledge other = (KmsKnowledge) object;

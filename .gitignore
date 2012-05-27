@@ -5,6 +5,6 @@ target
 .project
 .db
 .idea
-jsfrf.iml
+.iml
 nb-configuration.xml
 Thumbs.db
