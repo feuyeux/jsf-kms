@@ -4,14 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>creative.fire</groupId>
 	<artifactId>kms</artifactId>
-	<version>2.0</version>
+	<version>2.1</version>
 	<packaging>war</packaging>
+
 	<properties>
 		<org.richfaces.bom.version>4.2.1.Final</org.richfaces.bom.version>
 		<jsf.version>2.1.7</jsf.version>
 		<hibernate.version>3.5.1-Final</hibernate.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<section>dev</section>
 	</properties>
+
 	<repositories>
 		<repository>
 			<id>richfaces2</id>
@@ -76,11 +79,11 @@
 			<version>5.0.5</version>
 		</dependency>
 
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
-        </dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency>
 
 		<!-- JPA2 -->
 		<dependency>
@@ -134,17 +137,73 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>kms</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<pluginManagement>
 			<plugins>
+						<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<version>1.0-alpha-2</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>read-project-properties</goal>
+								</goals>
+								<configuration>
+									<files>
+										<file>src/main/resources/${section}.properties</file>
+									</files>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
 						<source>1.6</source>
 						<target>1.6</target>
-						<encoding>utf-8</encoding>
+						<encoding>UTF-8</encoding>
 					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<formats>
+							<format>xml</format>
+						</formats>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>cobertura</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
@@ -155,7 +214,8 @@
 							<phase>process-resources</phase>
 							<configuration>
 								<tasks>
-									<native2ascii encoding="utf-8" src="${project.build.testOutputDirectory}" dest="${project.build.outputDirectory}"/>
+									<native2ascii encoding="utf-8"
+										src="${project.build.testOutputDirectory}" dest="${project.build.outputDirectory}" />
 								</tasks>
 							</configuration>
 							<goals>
@@ -185,4 +245,28 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>mysqlEnv</id>
+			<properties>
+				<db.driver>com.mysql.jdbc.Driver</db.driver>
+				<db.dialect>org.hibernate.dialect.MySQLDialect</db.dialect>
+				<db.url>jdbc:mysql://${db.server.address}:3306</db.url>
+				<db.username>root</db.username>
+				<db.password>root</db.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>postgresqlEnv</id>
+			<properties>
+				<db.driver>org.postgresql.Driver</db.driver>
+				<db.dialect>org.hibernate.dialect.PostgreSQLDialect</db.dialect>
+				<db.url>jdbc:postgresql://${db.server.address}:5432</db.url>
+				<db.username>postgres</db.username>
+				<db.password>root</db.password>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
