@@ -12,7 +12,7 @@
 		<jsf.version>2.1.7</jsf.version>
 		<hibernate.version>3.5.1-Final</hibernate.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-		<section>dev</section>
+		<parameters.section>development</parameters.section>
 	</properties>
 
 	<repositories>
@@ -151,25 +151,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>properties-maven-plugin</artifactId>
-					<version>1.0-alpha-2</version>
-					<executions>
-						<execution>
-							<phase>initialize</phase>
-							<goals>
-								<goal>read-project-properties</goal>
-							</goals>
-							<configuration>
-								<files>
-									<file>src/main/resources/${section}.properties</file>
-								</files>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.3</version>
@@ -249,6 +230,28 @@
 	<profiles>
 		<profile>
 			<id>mysqlEnv</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<version>1.0-alpha-2</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>read-project-properties</goal>
+								</goals>
+								<configuration>
+									<files>
+										<file>src/main/resources/section/${parameters.section}.properties</file>
+									</files>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 			<properties>
 				<db.driver>com.mysql.jdbc.Driver</db.driver>
 				<db.dialect>org.hibernate.dialect.MySQLDialect</db.dialect>
@@ -259,6 +262,28 @@
 		</profile>
 		<profile>
 			<id>postgresqlEnv</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<version>1.0-alpha-2</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>read-project-properties</goal>
+								</goals>
+								<configuration>
+									<files>
+										<file>src/main/resources/section/${parameters.section}.properties</file>
+									</files>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 			<properties>
 				<db.driver>org.postgresql.Driver</db.driver>
 				<db.dialect>org.hibernate.dialect.PostgreSQLDialect</db.dialect>
