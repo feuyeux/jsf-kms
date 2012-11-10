@@ -9,8 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import creative.fire.no202.dao.KmsKnowledgeDao;
 import creative.fire.no202.dao.exceptions.PreexistingEntityException;
+import creative.fire.no202.dao.jpa2.KmsKnowledgeDao;
 import creative.fire.no202.dao.util.KmsPrimaryKey;
 import creative.fire.no202.entity.KmsKnowledge;
 import creative.fire.no202.entity.KmsUser;

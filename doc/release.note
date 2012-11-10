@@ -1,0 +1,10 @@
+kms1.0
+	manage knowledge, book and article by single user
+	
+kms2.0
+	jsf1.2 to jsf 2.0
+	richfaces3.3.3 to richfaces4.2.1
+	
+kms2.1 features
+	maven security
+	jdbc implmentation

@@ -11,12 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 /**
  * @author feuyeux@gmail.com
  * @version 2.0
  */
 @Entity
-@Table(name = "kms_user",schema = "kms")
+@Table(name = "kms_user", schema = "kms")
 @NamedQuery(name = "findByNameAndPassword", query = "SELECT k FROM KmsUser k " + "WHERE k.username = :username and k.password = :password")
 public class KmsUser implements Serializable {
 
@@ -100,21 +101,23 @@ public class KmsUser implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 37;
-		hash += (userId != null ? userId.hashCode() : 0);
+		hash += userId != null ? userId.hashCode() : 0;
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if (object == null)
+		if (object == null) {
 			return false;
-		if (object == this)
+		}
+		if (object == this) {
 			return true;
+		}
 		if (KmsUser.class != object.getClass()) {
 			return false;
 		}
 		KmsUser other = (KmsUser) object;
-		if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
+		if (userId == null && other.userId != null || userId != null && !userId.equals(other.userId)) {
 			return false;
 		}
 		return true;
@@ -122,6 +125,13 @@ public class KmsUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return userId;
+		StringBuilder buf = new StringBuilder();
+		buf.append("userId=").append(userId);
+		buf.append(", username=").append(username);
+		buf.append(", password=").append(password);
+		buf.append(", kmsArticleCollection size=").append(kmsArticleCollection == null ? 0 : kmsArticleCollection.size());
+		buf.append(", kmsBookCollection=").append(kmsBookCollection == null ? 0 : kmsBookCollection.size());
+		buf.append(", kmsKnowledgeCollection=").append(kmsKnowledgeCollection == null ? 0 : kmsKnowledgeCollection.size());
+		return buf.toString();
 	}
 }

@@ -136,22 +136,24 @@ public class KmsArticle implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 37;
-		hash += (articleId != null ? articleId.hashCode() : 0);
+		hash += articleId != null ? articleId.hashCode() : 0;
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if (object == null)
+		if (object == null) {
 			return false;
-		if (object == this)
+		}
+		if (object == this) {
 			return true;
+		}
 		if (KmsArticle.class != object.getClass()) {
 			return false;
 		}
-		
+
 		KmsArticle other = (KmsArticle) object;
-		if ((this.articleId == null && other.articleId != null) || (this.articleId != null && !this.articleId.equals(other.articleId))) {
+		if (articleId == null && other.articleId != null || articleId != null && !articleId.equals(other.articleId)) {
 			return false;
 		}
 		return true;

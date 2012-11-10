@@ -12,9 +12,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import creative.fire.no202.dao.KmsArticleDao;
-import creative.fire.no202.dao.KmsKnowledgeDao;
 import creative.fire.no202.dao.exceptions.PreexistingEntityException;
+import creative.fire.no202.dao.jpa2.KmsArticleDao;
+import creative.fire.no202.dao.jpa2.KmsKnowledgeDao;
 import creative.fire.no202.dao.util.KmsPrimaryKey;
 import creative.fire.no202.entity.KmsArticle;
 import creative.fire.no202.entity.KmsKnowledge;
@@ -62,15 +62,17 @@ public class KmsArticleBean implements Serializable {
 
 	public String create() throws IOException {
 		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null)
+		if (kmsKnowledge == null) {
 			return "kmsArticle_create";
+		}
 		kmsArticle.setKmsKnowledge(kmsKnowledge);
 
 		boolean attachmentOK = true;
 		StringBuilder attachments = null;
 
-		if (uploader.getFiles().size() > 0)
+		if (uploader.getFiles().size() > 0) {
 			attachments = new StringBuilder();
+		}
 
 		for (int i = 0; i < uploader.getFiles().size(); i++) {
 			KMSFile kmsFile = uploader.getFiles().get(i);
@@ -83,8 +85,9 @@ public class KmsArticleBean implements Serializable {
 
 			attachments.append(fileName);
 
-			if (i < uploader.getFiles().size() - 1)
+			if (i < uploader.getFiles().size() - 1) {
 				attachments.append(attachment_separator);
+			}
 		}
 
 		try {
@@ -111,8 +114,9 @@ public class KmsArticleBean implements Serializable {
 
 	public String update() throws IOException {
 		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null)
+		if (kmsKnowledge == null) {
 			return "kmsArticle_edit";
+		}
 		kmsArticle.setKmsKnowledge(kmsKnowledge);
 
 		boolean attachmentOK = true;
@@ -133,11 +137,13 @@ public class KmsArticleBean implements Serializable {
 
 				attachments.append(fileName);
 
-				if (i < uploader.getFiles().size() - 1)
+				if (i < uploader.getFiles().size() - 1) {
 					attachments.append(attachment_separator);
+				}
 			}
-			if (attachmentOK)
+			if (attachmentOK) {
 				kmsArticle.setAttachment(attachments.toString());
+			}
 		}
 		try {
 			dao.edit(kmsArticle);
@@ -196,8 +202,9 @@ public class KmsArticleBean implements Serializable {
 
 	public void searchByK() {
 		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null)
+		if (kmsKnowledge == null) {
 			return;
+		}
 		kmsArticleItems = dao.searchKmsArticle(kmsKnowledge);
 	}
 }

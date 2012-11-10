@@ -136,21 +136,23 @@ public class KmsBook implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 37;
-		hash += (bookId != null ? bookId.hashCode() : 0);
+		hash += bookId != null ? bookId.hashCode() : 0;
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if (object == null)
+		if (object == null) {
 			return false;
-		if (object == this)
+		}
+		if (object == this) {
 			return true;
+		}
 		if (KmsBook.class != object.getClass()) {
 			return false;
 		}
 		KmsBook other = (KmsBook) object;
-		if ((this.bookId == null && other.bookId != null) || (this.bookId != null && !this.bookId.equals(other.bookId))) {
+		if (bookId == null && other.bookId != null || bookId != null && !bookId.equals(other.bookId)) {
 			return false;
 		}
 		return true;

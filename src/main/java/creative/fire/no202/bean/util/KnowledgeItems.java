@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import creative.fire.no202.dao.KmsKnowledgeDao;
+import creative.fire.no202.dao.jpa2.KmsKnowledgeDao;
 import creative.fire.no202.entity.KmsKnowledge;
 import creative.fire.no202.entity.KmsUser;
 /**

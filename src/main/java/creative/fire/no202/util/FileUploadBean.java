@@ -29,11 +29,13 @@ public class FileUploadBean implements Serializable {
 
 	public void paint(OutputStream stream, Object object) throws IOException {
 		Integer index = (Integer) object;
-		if (getSize() == 0)
+		if (getSize() == 0) {
 			return;
+		}
 		KMSFile file = files.get(index);
-		if (file != null)
+		if (file != null) {
 			stream.write(file.getData());
+		}
 	}
 
 	// public void listener(UploadEvent event) throws Exception {

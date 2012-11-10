@@ -6,7 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import creative.fire.no202.dao.KmsUserDao;
+import creative.fire.no202.dao.jpa2.KmsUserDao;
 import creative.fire.no202.entity.KmsUser;
 
 /**

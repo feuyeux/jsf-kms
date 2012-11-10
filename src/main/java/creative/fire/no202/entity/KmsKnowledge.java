@@ -138,21 +138,23 @@ public class KmsKnowledge implements Serializable {
 	@Override
 	public int hashCode() {
 		int hash = 37;
-		hash += (knowledgeId != null ? knowledgeId.hashCode() : 0);
+		hash += knowledgeId != null ? knowledgeId.hashCode() : 0;
 		return hash;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if (object == null)
+		if (object == null) {
 			return false;
-		if (object == this)
+		}
+		if (object == this) {
 			return true;
+		}
 		if (KmsKnowledge.class != object.getClass()) {
 			return false;
 		}
 		KmsKnowledge other = (KmsKnowledge) object;
-		if ((this.knowledgeId == null && other.knowledgeId != null) || (this.knowledgeId != null && !this.knowledgeId.equals(other.knowledgeId))) {
+		if (knowledgeId == null && other.knowledgeId != null || knowledgeId != null && !knowledgeId.equals(other.knowledgeId)) {
 			return false;
 		}
 		return true;

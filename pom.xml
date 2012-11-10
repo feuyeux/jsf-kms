@@ -213,8 +213,6 @@
 										tofile="${project.build.outputDirectory}/META-INF/persistence.xml" />
 									<copy file="${project.build.testOutputDirectory}/log4j.xml"
 										tofile="${project.build.outputDirectory}/log4j.xml" />
-									<copy file="${project.build.testOutputDirectory}/log4j.dtd"
-										tofile="${project.build.outputDirectory}/log4j.dtd" />
 								</tasks>
 							</configuration>
 							<goals>
@@ -277,13 +275,6 @@
 					</plugin>
 				</plugins>
 			</build>
-			<properties>
-				<db.driver>org.postgresql.Driver</db.driver>
-				<db.dialect>org.hibernate.dialect.PostgreSQLDialect</db.dialect>
-				<db.url>jdbc:postgresql://${db.server.address}:5432</db.url>
-				<db.username>postgres</db.username>
-				<db.password>root</db.password>
-			</properties>
 		</profile>
 	</profiles>
 

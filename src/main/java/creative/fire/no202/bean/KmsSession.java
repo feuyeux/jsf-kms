@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 
-import creative.fire.no202.dao.KmsUserDao;
+import creative.fire.no202.dao.jpa2.KmsUserDao;
 import creative.fire.no202.dao.util.KmsPrimaryKey;
 import creative.fire.no202.entity.KmsUser;
 
@@ -62,8 +62,9 @@ public class KmsSession implements Serializable {
 		// TODO validate user data.
 		kmsUser = dao.findByNameAndPassword(kmsUserName, kmsPassword);
 
-		if (kmsUser == null)
+		if (kmsUser == null) {
 			return null;
+		}
 
 		Map<String, Object> sessions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessions.put("kmsUser", kmsUser);

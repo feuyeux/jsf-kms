@@ -14,7 +14,8 @@ File Encoding         : 65001
 Date: 2012-10-21 19:37:53
 */
 
-
+DROP SCHEMA kms;
+CREATE SCHEMA kms; 
 -- ----------------------------
 -- Table structure for "kms"."kms_article"
 -- ----------------------------
@@ -28,10 +29,7 @@ CREATE TABLE "kms"."kms_article" (
 "title" varchar(255) NOT NULL,
 "knowledgeid" varchar(255) NOT NULL,
 "userid" varchar(255) NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
+)WITH (OIDS=FALSE);
 
 -- ----------------------------
 -- Records of kms_article
@@ -51,10 +49,7 @@ CREATE TABLE "kms"."kms_book" (
 "publishtime" date,
 "knowledgeid" varchar(255) NOT NULL,
 "userid" varchar(255) NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
+)WITH (OIDS=FALSE);
 
 -- ----------------------------
 -- Records of kms_book
@@ -70,10 +65,7 @@ CREATE TABLE "kms"."kms_knowledge" (
 "name" varchar(255),
 "touchtime" date,
 "userid" varchar(255) NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
+)WITH (OIDS=FALSE);
 
 -- ----------------------------
 -- Records of kms_knowledge
@@ -87,38 +79,13 @@ CREATE TABLE "kms"."kms_user" (
 "userid" varchar(255) NOT NULL,
 "password" varchar(255),
 "username" varchar(255)
-)
-WITH (OIDS=FALSE)
+)WITH (OIDS=FALSE);
 
-;
 
--- ----------------------------
--- Records of kms_user
--- ----------------------------
-INSERT INTO "kms"."kms_user" VALUES ('kms_user_1350818969747', 'admin', 'admin');
-
--- ----------------------------
--- Alter Sequences Owned By 
--- ----------------------------
-
--- ----------------------------
--- Primary Key structure for table "kms"."kms_article"
--- ----------------------------
+INSERT INTO "kms"."kms_user" VALUES ('kms_user_1300000000000', 'admin', 'admin');
 ALTER TABLE "kms"."kms_article" ADD PRIMARY KEY ("articleid");
-
--- ----------------------------
--- Primary Key structure for table "kms"."kms_book"
--- ----------------------------
 ALTER TABLE "kms"."kms_book" ADD PRIMARY KEY ("bookid");
-
--- ----------------------------
--- Primary Key structure for table "kms"."kms_knowledge"
--- ----------------------------
 ALTER TABLE "kms"."kms_knowledge" ADD PRIMARY KEY ("knowledgeid");
-
--- ----------------------------
--- Primary Key structure for table "kms"."kms_user"
--- ----------------------------
 ALTER TABLE "kms"."kms_user" ADD PRIMARY KEY ("userid");
 
 -- ----------------------------
