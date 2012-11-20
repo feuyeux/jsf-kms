@@ -8,6 +8,7 @@ import java.sql.Statement;
 import org.apache.log4j.Logger;
 
 import creative.fire.no202.entity.KmsUser;
+
 /**
  * @author feuyeux@gmail.com
  * @version 2.1
@@ -16,7 +17,10 @@ public class KmsDB {
 	Logger logger = Logger.getLogger(getClass());
 
 	public void retrieveAndFill(KmsUser user, String kms_one_line_sql) throws SQLException {
-		Connection conn = KmsDBConnectionPool.getInstance().getConnection(500);
+		Connection conn;
+		conn =  KmsDBConnectionPool.getInstance().getConnection(500);
+		//conn = new C3p0ConnectionPool().getConnection();
+
 		Statement stat = null;
 		ResultSet rs = null;
 		try {
@@ -28,6 +32,7 @@ public class KmsDB {
 				user.setPassword(rs.getString("password"));
 			}
 		} catch (SQLException e) {
+			logger.error(e);
 		} finally {
 			if (rs != null) {
 				rs.close();

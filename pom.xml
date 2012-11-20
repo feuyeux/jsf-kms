@@ -123,6 +123,13 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 
+		<!-- connection pool -->
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
