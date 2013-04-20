@@ -1,6 +1,7 @@
 .settings
 target
 .classpath
+.log
 .DS_Store
 .project
 .db

@@ -8,3 +8,6 @@ kms2.0
 kms2.1 features
 	maven security
 	jdbc implmentation
+
+kms2.2
+	jsfunit
