@@ -13,7 +13,7 @@
 	<ui:define name="kmsBody">
 		<h:form id="bform">
 			<rich:panel id="bookListPanel" styleClass="list_style">
-				<rich:dataTable id="bTable" border="1" value="#{kmsBookBean.kmsBookItems}" var="b" style=" width : 100%;" rows="10">
+				<rich:dataTable id="bTable" value="#{kmsBookBean.kmsBookItems}" var="b" style=" width : 100%;" rows="10">
 					<f:facet name="header">
 						<rich:columnGroup>
 							<rich:column style="width:50px;" />

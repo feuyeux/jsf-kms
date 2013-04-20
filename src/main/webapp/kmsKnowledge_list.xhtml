@@ -14,7 +14,7 @@
 		<h:form id="kform">
 			<rich:panel id="knowledgeListPanel" styleClass="list_style">
 				<h:outputText value="#{kmsMsg.addNotification}" rendered="#{!kmsKnowledgeBean.show}" />
-				<rich:dataTable id="kTable" border="1" value="#{kmsKnowledgeBean.kmsKnowledgeItems}" var="k" style="width:100%;"
+				<rich:dataTable id="kTable" value="#{kmsKnowledgeBean.kmsKnowledgeItems}" var="k" style="width:100%;"
 					rows="10" rendered="#{kmsKnowledgeBean.show}">
 					<f:facet name="header">
 						<rich:columnGroup>

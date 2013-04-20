@@ -153,7 +153,7 @@ public class KmsArticleDao {
 	public List<KmsArticle> searchKmsArticle(KmsKnowledge kmsKnowledge) {
 		EntityManager em = KmsDBFactory.getInstance().getEntityManager();
 		try {
-			TypedQuery<KmsArticle> query = em.createQuery("from KmsArticle as kmsArticle where kmsArticle.kmsKnowledge=?1", KmsArticle.class);
+			TypedQuery<KmsArticle> query = em.createQuery("from KmsArticle as kmsArticle where kmsArticle.kmsKnowledge=?", KmsArticle.class);
 			List<KmsArticle> kmsArticles = query.setParameter(1, kmsKnowledge).getResultList();
 			return kmsArticles;
 		} finally {

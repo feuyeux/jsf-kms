@@ -34,8 +34,7 @@
 				</rich:editor>
 
 				<h:outputText style="font-weight:bold" value="#{kmsMsg.attachment}" />
-				<rich:dataTable id="attachmentTable" border="1"
-					value="#{kmsArticleBean.attachments}" var="attachment"
+				<rich:dataTable id="attachmentTable" value="#{kmsArticleBean.attachments}" var="attachment"
 					style="width : 100%;" rows="10">
 					<rich:column>
 						<a href="#{attachment}" target="_blank"><h:outputText value="#{attachment}"/></a>

@@ -103,8 +103,6 @@ public class KmsArticleBean implements Serializable {
 			kmsArticle.setKmsUser(kmsUser);
 
 			dao.create(kmsArticle);
-		} catch (PreexistingEntityException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -160,7 +158,7 @@ public class KmsArticleBean implements Serializable {
 	public List<KmsArticle> getKmsArticleItems() {
 		if (kmsArticleItems == null) {
 			if (kmsKnowledgeId != null) {
-				searchByK();
+				searchByKey();
 				return kmsArticleItems;
 			}
 			kmsArticleItems = dao.findKmsArticleEntities();
@@ -200,7 +198,7 @@ public class KmsArticleBean implements Serializable {
 		return kmsArticleItems != null && kmsArticleItems.size() > 0;
 	}
 
-	public void searchByK() {
+	public void searchByKey() {
 		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
 		if (kmsKnowledge == null) {
 			return;

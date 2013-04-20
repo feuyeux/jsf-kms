@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import creative.fire.no202.dao.jpa2.KmsUserDao;
 import creative.fire.no202.dao.util.KmsPrimaryKey;
 import creative.fire.no202.entity.KmsUser;
+import javax.persistence.Transient;
 
 /**
  * @author feuyeux@gmail.com
@@ -23,6 +24,7 @@ import creative.fire.no202.entity.KmsUser;
 public class KmsSession implements Serializable {
 	private static final long serialVersionUID = -9145582920498318744L;
 	private KmsUser kmsUser;
+        @Transient
 	private KmsUserDao dao;
 	private String kmsUserName = "admin";
 	private String kmsPassword = "admin";
