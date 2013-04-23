@@ -1,7 +1,7 @@
 .settings
 target
 .classpath
-.log
+kms.log
 .DS_Store
 .project
 .db
@@ -10,3 +10,4 @@ target
 nb-configuration.xml
 Thumbs.db
 bin
+lib

@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.log4j.Logger;
+
 /**
  * @author feuyeux@gmail.com
  * @version 2.1
@@ -47,7 +48,7 @@ public class KmsDBConnectionPool {
 		Connection conn;
 		try {
 			conn = pool.poll(timeout, TimeUnit.MILLISECONDS);
-			if (conn == null) {
+			if (conn == null || conn.isClosed()) {
 				synchronized (poolCount) {
 					if (poolCount.get() < poolSize) {
 						Class.forName(params.getDbDriver());

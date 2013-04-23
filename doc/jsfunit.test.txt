@@ -1,0 +1,3 @@
+>mvn dependency:copy-dependencies -DoutputDirectory=lib
+D:\servers\jboss-as-7.1.1.Final\bin>standalone.bat
+>mvn -Pjbossas-remote-7 test

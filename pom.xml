@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>creative.fire</groupId>
 	<artifactId>kms</artifactId>
@@ -16,11 +17,13 @@
 		<netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
 
 		<version.jsfunit>2.0.0.Beta2</version.jsfunit>
-		<version.arquillian>1.0.0.CR4</version.arquillian>
-		<version.arquillian.jboss>1.0.0.CR2</version.arquillian.jboss>
-		<version.shrinkwrap>1.0.0-beta-5</version.shrinkwrap>
-		<version.shrinkwrap.descriptors>1.1.0-alpha-2</version.shrinkwrap.descriptors>
+		<version.arquillian>1.0.0.Final</version.arquillian>
+		<version.arquillian.jboss>1.0.0.Final</version.arquillian.jboss>
+		<version.shrinkwrap>1.0.0</version.shrinkwrap>
+		<version.shrinkwrap.descriptors>1.1.0-beta-1</version.shrinkwrap.descriptors>
+		<version.shrinkwrap.resolvers>1.0.0-beta-5</version.shrinkwrap.resolvers>
 		<version.jboss_60>6.0.0.Final</version.jboss_60>
+		<version.jboss_7>7.1.1.Final</version.jboss_7>
 	</properties>
 
 	<repositories>
@@ -77,13 +80,6 @@
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
 			<version>${jsf.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -155,8 +151,15 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
-        
-        <!--unit test -->
+
+		<!--unit test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
@@ -176,6 +179,12 @@
 			<artifactId>arquillian-container-spi</artifactId>
 			<version>${version.arquillian}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.testenricher</groupId>
+			<artifactId>arquillian-testenricher-cdi</artifactId>
+			<version>${version.arquillian}</version>
 		</dependency>
 
 		<dependency>
@@ -216,14 +225,14 @@
 		<dependency>
 			<groupId>org.jboss.shrinkwrap.resolver</groupId>
 			<artifactId>shrinkwrap-resolver-api-maven</artifactId>
-			<version>${version.shrinkwrap}</version>
+			<version>${version.shrinkwrap.resolvers}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.shrinkwrap.resolver</groupId>
 			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-			<version>${version.shrinkwrap}</version>
+			<version>${version.shrinkwrap.resolvers}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -315,7 +324,49 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>	
+
+		<profile>
+			<id>jbossas-remote-7</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<version>1.0-alpha-2</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>read-project-properties</goal>
+								</goals>
+								<configuration>
+									<files>
+										<file>src/main/resources/section/${parameters.section}.properties</file>
+									</files>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.spec</groupId>
+					<artifactId>jboss-javaee-6.0</artifactId>
+					<version>1.0.0.Final</version>
+					<type>pom</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-remote</artifactId>
+					<version>${version.jboss_7}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
 		</profile>
+
 		<profile>
 			<id>postgresqlEnv</id>
 			<build>
