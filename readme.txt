@@ -4,6 +4,13 @@ JSFRF KMS
 feuyeux@yahoo.com
 April 2012
 =====================================================================
+2013.6.29
+<org.richfaces.bom.version>4.3.2.Final</org.richfaces.bom.version>
+<jsf.version>2.1.19</jsf.version>
+<hibernate.version>4.2.2.Final</hibernate.version>
+
+mvn clean install -PmysqlEnv
+
 2010.4.15
 JSF:
 	Mojarra:

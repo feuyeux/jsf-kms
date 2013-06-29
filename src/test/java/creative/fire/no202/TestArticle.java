@@ -12,6 +12,7 @@ import org.jboss.jsfunit.jsfsession.JSFClientSession;
 import org.jboss.jsfunit.jsfsession.JSFServerSession;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,6 +20,7 @@ import org.junit.runner.RunWith;
  * @author feuyeux@gmail.com
  * @version 2.2
  */
+@Ignore
 @RunWith(Arquillian.class)
 public class TestArticle {
 	public static final boolean IS_JETTY = (System.getProperty("jetty-embedded") != null);
