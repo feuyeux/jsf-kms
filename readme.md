@@ -1,31 +1,35 @@
-=====================================================================
-JSFRF KMS
+**JSFRF KMS**
 
 feuyeux@yahoo.com
-April 2012
-=====================================================================
-2013.6.29
-<org.richfaces.bom.version>4.3.2.Final</org.richfaces.bom.version>
-<jsf.version>2.1.19</jsf.version>
-<hibernate.version>4.2.2.Final</hibernate.version>
 
-mvn clean install -PmysqlEnv
+### 28/06/2013 ###
+	JSF upgrade: 2.1.7 -> 2.1.19
+	RichFaces upgrade: 4.2.1.Final -> 4.3.2.Final
+	3.5.1-Final -> 4.3.0.Final 
+	mvn clean install -PmysqlEnv
 
-2010.4.15
+### 04/04/2012 ### 
+
+> public page: http://feuyeux.github.com/kms
+
+### 2010.4.15 ###
 JSF:
-	Mojarra:
+
+Mojarra:
+
 	<dependency>
 		<groupId>org.glassfish</groupId>
 		<artifactId>javax.faces</artifactId>
 		<version>2.1.7</version>
 	</dependency>
-	MyFaces:
+
+MyFaces:
+
 	<dependency>
 		<groupId>org.apache.myfaces.core</groupId>
 		<artifactId>myfaces-api</artifactId>
 		<version>2.1.6</version>
 	</dependency>
-	
 	<dependency>
 		<groupId>org.apache.myfaces.core</groupId>
 		<artifactId>myfaces-impl</artifactId>
@@ -44,6 +48,3 @@ RichFace:
 		<artifactId>richfaces-core-impl</artifactId>
 		<version>4.2.1.Final</version>
 	</dependency>
-
-04/04/2012
-public page: http://feuyeux.github.com/kms
