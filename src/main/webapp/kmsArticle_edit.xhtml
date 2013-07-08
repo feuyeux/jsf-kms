@@ -29,7 +29,7 @@
 				<h:inputTextarea style=" width : 633px; height : 138px;" value="#{kmsArticleBean.kmsArticle.summary}" rows="8" cols="2"/>
 	
 				<h:outputText value="#{kmsMsg.content}" />
-				<rich:editor id="content_editor" theme="advanced" value="#{kmsArticleBean.kmsArticle.content}" 
+				<rich:editor id="content_editor" value="#{kmsArticleBean.kmsArticle.content}" 
 				width="800" height="468" skin="o2k7">
 					<f:param name="theme" value="advanced"/>
 					<f:param name="plugins" value="save,paste"/>

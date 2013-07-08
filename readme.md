@@ -6,6 +6,7 @@ feuyeux@yahoo.com
 	JSF upgrade: 2.1.7 -> 2.1.19
 	RichFaces upgrade: 4.2.1.Final -> 4.3.2.Final
 	3.5.1-Final -> 4.3.0.Final 
+	
 	mvn clean install -PmysqlEnv
 
 ### 04/04/2012 ### 

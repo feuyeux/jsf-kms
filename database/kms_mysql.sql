@@ -1,6 +1,6 @@
-drop DATABASE IF EXISTS `kms`;
-create DATABASE `kms`;
-use kms;
+drop DATABASE IF EXISTS `air_kms`;
+create DATABASE `air_kms`;
+use `air_kms`;
 
 SET FOREIGN_KEY_CHECKS=0;
 

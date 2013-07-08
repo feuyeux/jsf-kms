@@ -26,8 +26,7 @@
 					<h:inputTextarea style=" width:633px; height:60px;" value="#{kmsArticleBean.kmsArticle.summary}" rows="4" cols="2" />
 
 					<h:outputText value="#{kmsMsg.content}" />
-					<rich:editor id="content_editor" value="#{kmsArticleBean.kmsArticle.content}" width="800" height="633"
-						theme="advanced">
+					<rich:editor id="content_editor" value="#{kmsArticleBean.kmsArticle.content}" width="800" height="633">
 						<f:param name="theme_advanced_toolbar_location" value="top" />
 						<f:param name="theme_advanced_toolbar_align" value="left" />
 						<f:param name="theme_advanced_resizing" value="true" />
