@@ -3,20 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.feuyeux.air</groupId>
-    <artifactId>air-kms</artifactId>
+    <artifactId>jsf-kms</artifactId>
     <name>kms</name>
     <version>2.2</version>
     <packaging>war</packaging>
 
     <properties>
-        <richfaces.version>4.3.2.Final</richfaces.version>
-        <jsf.version>2.1.19</jsf.version>
+        <richfaces.version>4.3.4.Final</richfaces.version>
+        <jsf.version>2.2.4</jsf.version>
         <hibernate.version>4.2.2.Final</hibernate.version>
         <mysql-connector.version>5.1.25</mysql-connector.version>
 		
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <parameters.section>development</parameters.section>
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
 
         <version.jsfunit>2.0.0.Beta2</version.jsfunit>
         <version.arquillian>1.0.0.Final</version.arquillian>
@@ -311,49 +310,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>	
-
-        <profile>
-            <id>jbossas-remote-7</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>properties-maven-plugin</artifactId>
-                        <version>1.0-alpha-2</version>
-                        <executions>
-                            <execution>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>read-project-properties</goal>
-                                </goals>
-                                <configuration>
-                                    <files>
-                                        <file>src/main/resources/section/${parameters.section}.properties</file>
-                                    </files>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <dependencies>
-                <dependency>
-                    <groupId>org.jboss.spec</groupId>
-                    <artifactId>jboss-javaee-6.0</artifactId>
-                    <version>1.0.0.Final</version>
-                    <type>pom</type>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.as</groupId>
-                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
-                    <version>${version.jboss_7}</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
         </profile>
-
         <profile>
             <id>postgresqlEnv</id>
             <build>

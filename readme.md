@@ -2,6 +2,13 @@
 
 feuyeux@yahoo.com
 
+### 19/12/2013 ###
+	AIR-KMS2.2:
+	JSF upgrade: 2.1.19 -> 2.2.4
+	RichFaces upgrade: 4.3.2.Final -> 4.3.4.Final
+
+	mvn clean install -PmysqlEnv
+
 ### 28/06/2013 ###
 	AIR-KMS2.2:
 	JSF upgrade: 2.1.7 -> 2.1.19

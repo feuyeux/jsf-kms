@@ -29,180 +29,180 @@ import org.feuyeux.air.jsf.kms.util.KMSFile;
 @ManagedBean
 @ViewScoped
 public class KmsArticleBean implements Serializable {
-	private static final long serialVersionUID = -432417525217211434L;
-	private final static String filepath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploadFiles";
-	private final static String attachment_separator = ";";
-	private KmsArticleDao dao;
-	private KmsKnowledgeDao kmsKnowledgeDao;
-	private KmsArticle kmsArticle;// support TinyMCE
-	private List<KmsArticle> kmsArticleItems;
-	private String kmsKnowledgeId;
-	private FileUploadBean uploader;
+    private static final long serialVersionUID = 1L;
+    private final static String attachment_separator = ";";
+    private KmsArticleDao dao;
+    private KmsKnowledgeDao kmsKnowledgeDao;
+    private KmsArticle kmsArticle;// support TinyMCE
+    private List<KmsArticle> kmsArticleItems;
+    private String kmsKnowledgeId;
+    private FileUploadBean uploader;
 
-	public KmsArticleBean() {
-		dao = new KmsArticleDao();
-		kmsKnowledgeDao = new KmsKnowledgeDao();
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String aId = params.get("aId");
+    public KmsArticleBean() {
+        dao = new KmsArticleDao();
+        kmsKnowledgeDao = new KmsKnowledgeDao();
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String aId = params.get("aId");
 
-		if (aId != null) {
-			kmsArticle = dao.findKmsArticle(aId);
-			kmsKnowledgeId = kmsArticle.getKmsKnowledge().getKnowledgeId();
-		} else {
-			kmsKnowledgeId = params.get("kId");// maybe null.
-			kmsArticle = new KmsArticle();
-		}
+        if (aId != null) {
+            kmsArticle = dao.findKmsArticle(aId);
+            kmsKnowledgeId = kmsArticle.getKmsKnowledge().getKnowledgeId();
+        } else {
+            kmsKnowledgeId = params.get("kId");// maybe null.
+            kmsArticle = new KmsArticle();
+        }
 
-		uploader = new FileUploadBean();
-	}
+        uploader = new FileUploadBean();
+    }
 
-	public FileUploadBean getUploader() {
-		return uploader;
-	}
+    public FileUploadBean getUploader() {
+        return uploader;
+    }
 
-	public String create() throws IOException {
-		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null) {
-			return "kmsArticle_create";
-		}
-		kmsArticle.setKmsKnowledge(kmsKnowledge);
+    public String create() throws IOException {
+        KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
+        if (kmsKnowledge == null) {
+            return "kmsArticle_create";
+        }
+        kmsArticle.setKmsKnowledge(kmsKnowledge);
 
-		boolean attachmentOK = true;
-		StringBuilder attachments = null;
+        boolean attachmentOK = true;
+        StringBuilder attachments = null;
 
-		if (uploader.getFiles().size() > 0) {
-			attachments = new StringBuilder();
-		}
+        if (uploader.getFiles().size() > 0) {
+            attachments = new StringBuilder();
+        }
+        final String filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploadFiles";
+        for (int i = 0; i < uploader.getFiles().size(); i++) {
+            KMSFile kmsFile = uploader.getFiles().get(i);
+            String fileName = kmsFile.getName();
+            File file = new File(filePath, fileName);
+            FileOutputStream out;
 
-		for (int i = 0; i < uploader.getFiles().size(); i++) {
-			KMSFile kmsFile = uploader.getFiles().get(i);
-			String fileName = kmsFile.getName();
-			File file = new File(filepath, fileName);
-			FileOutputStream out;
+            out = new FileOutputStream(file);
+            out.write(kmsFile.getData());
 
-			out = new FileOutputStream(file);
-			out.write(kmsFile.getData());
+            attachments.append(fileName);
 
-			attachments.append(fileName);
+            if (i < uploader.getFiles().size() - 1) {
+                attachments.append(attachment_separator);
+            }
+        }
 
-			if (i < uploader.getFiles().size() - 1) {
-				attachments.append(attachment_separator);
-			}
-		}
+        try {
+            if (attachmentOK && attachments != null) {
+                kmsArticle.setAttachment(attachments.toString());
+            }
 
-		try {
-			if (attachmentOK && attachments != null) {
-				kmsArticle.setAttachment(attachments.toString());
-			}
+            String articleId = KmsPrimaryKey.ARITICLE + System.nanoTime();
+            kmsArticle.setArticleId(articleId);
 
-			String articleId = KmsPrimaryKey.ARITICLE + System.nanoTime();
-			kmsArticle.setArticleId(articleId);
+            Map<String, Object> sesions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+            KmsUser kmsUser = (KmsUser) sesions.get("kmsUser");
+            kmsArticle.setKmsUser(kmsUser);
 
-			Map<String, Object> sesions = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-			KmsUser kmsUser = (KmsUser) sesions.get("kmsUser");
-			kmsArticle.setKmsUser(kmsUser);
+            dao.create(kmsArticle);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-			dao.create(kmsArticle);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        return "kmsArticle_list?faces-redirect=true";
+    }
 
-		return "kmsArticle_list?faces-redirect=true";
-	}
+    public String update() throws IOException {
+        KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
+        if (kmsKnowledge == null) {
+            return "kmsArticle_edit";
+        }
+        kmsArticle.setKmsKnowledge(kmsKnowledge);
 
-	public String update() throws IOException {
-		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null) {
-			return "kmsArticle_edit";
-		}
-		kmsArticle.setKmsKnowledge(kmsKnowledge);
+        boolean attachmentOK = true;
+        StringBuilder attachments = null;
 
-		boolean attachmentOK = true;
-		StringBuilder attachments = null;
+        if (uploader.getFiles().size() > 0) {
+            attachments = new StringBuilder();
+            attachments.append(kmsArticle.getAttachment());
+            attachments.append(attachment_separator);
+            final String filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploadFiles";
+            for (int i = 0; i < uploader.getFiles().size(); i++) {
+                KMSFile kmsFile = uploader.getFiles().get(i);
+                String fileName = kmsFile.getName();
+                File file = new File(filePath, fileName);
+                FileOutputStream out;
 
-		if (uploader.getFiles().size() > 0) {
-			attachments = new StringBuilder();
-			attachments.append(kmsArticle.getAttachment());
-			attachments.append(attachment_separator);
-			for (int i = 0; i < uploader.getFiles().size(); i++) {
-				KMSFile kmsFile = uploader.getFiles().get(i);
-				String fileName = kmsFile.getName();
-				File file = new File(filepath, fileName);
-				FileOutputStream out;
+                out = new FileOutputStream(file);
+                out.write(kmsFile.getData());
 
-				out = new FileOutputStream(file);
-				out.write(kmsFile.getData());
+                attachments.append(fileName);
 
-				attachments.append(fileName);
+                if (i < uploader.getFiles().size() - 1) {
+                    attachments.append(attachment_separator);
+                }
+            }
+            if (attachmentOK) {
+                kmsArticle.setAttachment(attachments.toString());
+            }
+        }
+        try {
+            dao.edit(kmsArticle);
+        } catch (PreexistingEntityException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-				if (i < uploader.getFiles().size() - 1) {
-					attachments.append(attachment_separator);
-				}
-			}
-			if (attachmentOK) {
-				kmsArticle.setAttachment(attachments.toString());
-			}
-		}
-		try {
-			dao.edit(kmsArticle);
-		} catch (PreexistingEntityException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        return "kmsArticle_list?faces-redirect=true";
 
-		return "kmsArticle_list?faces-redirect=true";
+    }
 
-	}
+    public List<KmsArticle> getKmsArticleItems() {
+        if (kmsArticleItems == null) {
+            if (kmsKnowledgeId != null) {
+                searchByKey();
+                return kmsArticleItems;
+            }
+            kmsArticleItems = dao.findKmsArticleEntities();
+        }
+        return kmsArticleItems;
+    }
 
-	public List<KmsArticle> getKmsArticleItems() {
-		if (kmsArticleItems == null) {
-			if (kmsKnowledgeId != null) {
-				searchByKey();
-				return kmsArticleItems;
-			}
-			kmsArticleItems = dao.findKmsArticleEntities();
-		}
-		return kmsArticleItems;
-	}
+    public KmsArticle getKmsArticle() {
+        return kmsArticle;
+    }
 
-	public KmsArticle getKmsArticle() {
-		return kmsArticle;
-	}
+    public String getKmsKnowledgeId() {
+        return kmsKnowledgeId;
+    }
 
-	public String getKmsKnowledgeId() {
-		return kmsKnowledgeId;
-	}
+    public ArrayList<String> getAttachments() {
+        String kmspath = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + "/uploadFiles/";
+        String attachmentParameter = kmsArticle.getAttachment();
+        if (attachmentParameter != null && attachmentParameter.length() > 0) {
+            String[] attachments = attachmentParameter.split(attachment_separator);
+            ArrayList<String> result = new ArrayList<String>();
+            for (String attachment : attachments) {
+                result.add(kmspath + attachment);
+            }
+            return result;
+        } else {
+            return null;
+        }
+    }
 
-	public ArrayList<String> getAttachments() {
-		String kmspath = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + "/uploadFiles/";
-		String attachmentParameter = kmsArticle.getAttachment();
-		if (attachmentParameter != null && attachmentParameter.length() > 0) {
-			String[] attachments = attachmentParameter.split(attachment_separator);
-			ArrayList<String> result = new ArrayList<String>();
-			for (String attachment : attachments) {
-				result.add(kmspath + attachment);
-			}
-			return result;
-		} else {
-			return null;
-		}
-	}
+    public void setKmsKnowledgeId(String kmsKnowledgeId) {
+        this.kmsKnowledgeId = kmsKnowledgeId;
+    }
 
-	public void setKmsKnowledgeId(String kmsKnowledgeId) {
-		this.kmsKnowledgeId = kmsKnowledgeId;
-	}
+    public boolean isShow() {
+        kmsArticleItems = getKmsArticleItems();
+        return kmsArticleItems != null && kmsArticleItems.size() > 0;
+    }
 
-	public boolean isShow() {
-		kmsArticleItems = getKmsArticleItems();
-		return kmsArticleItems != null && kmsArticleItems.size() > 0;
-	}
-
-	public void searchByKey() {
-		KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
-		if (kmsKnowledge == null) {
-			return;
-		}
-		kmsArticleItems = dao.searchKmsArticle(kmsKnowledge);
-	}
+    public void searchByKey() {
+        KmsKnowledge kmsKnowledge = kmsKnowledgeDao.findKmsKnowledge(kmsKnowledgeId);
+        if (kmsKnowledge == null) {
+            return;
+        }
+        kmsArticleItems = dao.searchKmsArticle(kmsKnowledge);
+    }
 }

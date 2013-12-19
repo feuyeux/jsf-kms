@@ -11,3 +11,4 @@ nb-configuration.xml
 Thumbs.db
 bin
 lib
+.iml
